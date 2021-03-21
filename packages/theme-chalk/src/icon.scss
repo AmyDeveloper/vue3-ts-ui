@@ -1,0 +1,55 @@
+@import './common/variables.scss';
+
+@font-face {font-family: "y-ui-icons";
+  src:
+  url('./fonts/iconfont.woff?t=1616323097173') format('woff'),
+  url('./fonts/iconfont.ttf?t=1616323097173') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+
+}
+
+[class^="`#{namespace}-icon-`"] {
+  font-family: "y-ui-icons" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.y-icon-Chat:before {
+  content: "\e65f";
+}
+
+.y-icon-loading:before {
+  content: "\e61c";
+}
+
+.y-icon-fanhui:before {
+  content: "\e61e";
+}
+
+.y-icon-menu:before {
+  content: "\e605";
+}
+
+.y-icon-Plus:before {
+  content: "\eab7";
+}
+
+
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+    opacity: 0;
+  }
+  to {
+    transform: rotate(360deg);
+    opacity: 1;
+  }
+}
+
+.#{$namespace}-icon-loading {
+  animation: rotate 0.8s linear infinite;
+}
+
+
