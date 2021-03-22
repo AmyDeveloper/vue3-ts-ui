@@ -69,7 +69,19 @@ yarn add rollup rollup-plugin-typescript2 @rollup/plugin-node-resolve rollup-plu
 
 ##### 打包 umd 格式
 ```sh
+  浏览器/全局都可以用
 ```
+
+
+### ToDo-List
+- [x] icon
+- [x] button
+- [ ] button-group
+- [ ] layoout
+- [ ] checkbox
+- [ ] checkbox-group
+- [ ] transfer
+- [ ] message
 
 
 
