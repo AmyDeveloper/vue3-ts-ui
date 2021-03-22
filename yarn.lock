@@ -8315,7 +8315,7 @@ safe-regex@^1.1.0:
 
 sass-loader@^11.0.1:
   version "11.0.1"
-  resolved "https://registry.npm.taobao.org/sass-loader/download/sass-loader-11.0.1.tgz#8672f896593466573b904f47693e0695368e38c9"
+  resolved "https://registry.npm.taobao.org/sass-loader/download/sass-loader-11.0.1.tgz?cache=0&sync_timestamp=1612804548821&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fsass-loader%2Fdownload%2Fsass-loader-11.0.1.tgz#8672f896593466573b904f47693e0695368e38c9"
   integrity sha1-hnL4llk0Zlc7kE9HaT4GlTaOOMk=
   dependencies:
     klona "^2.0.4"

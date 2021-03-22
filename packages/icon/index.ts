@@ -7,4 +7,4 @@ Icon.install = (app: App): void=> {
 type IWithInstall<T> = T & { install(app: App): void}
 
 const _Icon: IWithInstall<typeof Icon> = Icon
-export default Icon
+export default _Icon

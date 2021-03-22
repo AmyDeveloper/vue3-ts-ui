@@ -1,13 +1,13 @@
 @import "../common/variables.scss";
 
-// .z-button{}
+// .y-button{}
 @mixin b($block) {
     $B: $namespace+'-'+$block;
     .#{$B}{
         @content;
     }
 }
-// .z-button.is-xxx
+// .y-button.is-xxx
 @mixin when($state) {
     @at-root {
         &.#{$state-prefix + $state} {
@@ -15,7 +15,7 @@
         }
     }
 }
-// &--primary => .z-button--primary
+// &--primary => .y-button--primary
 @mixin m($modifier) {
     @at-root {
         #{&+$modifier-separator+$modifier} {
@@ -23,11 +23,17 @@
         }
     }
 }
-// &__header  => .z-button__header
+// &__header  => .y-button__header
 @mixin e($element) {
     @at-root {
         #{&+$element-separator+$element} {
             @content;
         }
     }
+}
+
+@mixin button-type($color,$background-color,$border-color){
+    color: $color;
+    background-color: $background-color ;
+    border-color: $border-color;
 }

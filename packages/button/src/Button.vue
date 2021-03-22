@@ -1,15 +1,19 @@
 <template>
-  <button>按钮</button>
+  <button :class="classes">
+    <i v-if="loading" class="y-icon-loading"></i>
+    <i v-if="icon && !loading" :class="icon"></i>
+    <span v-if="$slots.default"><slot></slot></span>
+  </button>
 </template>
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
+import { computed, defineComponent, PropType } from 'vue'
 
 type IButton = 'primary' | 'success' | 'warning' | 'danger' | 'info' | 'default'
 
 export default defineComponent({
   name: 'YButton',
   props: {
-    name: {
+    type: {
       type: String as PropType<IButton>,
       default: 'primary',
       validator: (val: string) => {
@@ -24,7 +28,7 @@ export default defineComponent({
       }
     },
     icon: {
-      type: String, 
+      type: String,
       default: '',
     },
     disabled: Boolean,
@@ -32,6 +36,19 @@ export default defineComponent({
     round: Boolean,
   },
   setup(props, ctx) {
+    console.log(props)
+    const classes = computed(() => [
+      'y-button',
+      'y-button--'+ props.type,
+      {
+        'is-disabled': props.disabled,
+        'is-loading': props.loading,
+        'is-round': props.round,
+      }
+    ])
+    return {
+      classes
+    }
   },
 })
 </script>
