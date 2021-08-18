@@ -24,7 +24,6 @@
 - lerna create y-ui
 
 
-
 #### website 效果展示
 ```sh
   webpack.config.js
@@ -45,9 +44,9 @@
     file-loader // 大文件生成真实文件
     html-webpack-plugin
     css-loader
-    stylus-loader
+    sass-loader
     style-loader
-    stylus
+    sass
     -D
 
 ```
@@ -82,6 +81,11 @@ yarn add rollup rollup-plugin-typescript2 @rollup/plugin-node-resolve rollup-plu
 - [ ] checkbox-group
 - [ ] transfer
 - [ ] message
+
+
+
+### 问题记录
+- gulp-dart-sass 不支持 scss(1.33.x 以上版本 将 10 / 2 更新为 math.div(10, 2)) 新语法 math.div，换成  gulp-dart-scss
 
 
 

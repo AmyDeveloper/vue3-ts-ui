@@ -34,9 +34,10 @@ export default defineComponent({
     disabled: Boolean,
     loading: Boolean,
     round: Boolean,
+    circle: Boolean,
   },
   setup(props, ctx) {
-    console.log(props)
+    console.log('button---type', props.type)
     const classes = computed(() => [
       'y-button',
       'y-button--'+ props.type,
@@ -44,6 +45,7 @@ export default defineComponent({
         'is-disabled': props.disabled,
         'is-loading': props.loading,
         'is-round': props.round,
+        'is-circle': props.circle
       }
     ])
     return {

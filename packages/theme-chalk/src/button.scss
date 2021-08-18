@@ -1,3 +1,5 @@
+@use "sass:map";
+
 @import "./common/variables.scss";
 @import "./mixins//mixin.scss";
 
@@ -14,12 +16,34 @@
   & [class*="y-icon-"]{
     vertical-align: middle;
     & + span{
-      margin-left:5px;
+      margin-left: 5px;
     }
   }
 
   @include when(disabled){
-    cursor: not-allowed;
+    &,
+    &.hover,
+    &.focus {
+      color: var(--y-button-disabled-font-color);
+      cursor: not-allowed;
+      background-image: none;
+      background-color: var(--y-button-disabled-background-color);
+      border-color: var(--y-button-disabled-border-color);
+    }
+    &.#{$namespace}-button--text {
+      background-color: transparent;
+    }
+
+    &.is-plain {
+      &,
+      &:hover,
+      &:focus {
+        background-color: var(--y-color-white);
+        border-color: var(--y-button-disabled-border-color);
+        color: var(--y-button-disabled-font-color);
+      }
+    }
+    
   }
 
   @include when(loading){
@@ -28,6 +52,11 @@
 
   @include when(round){
     border-radius: 15px;
+  }
+
+  @include when(circle) {
+    border-radius: 50%;
+    padding: map.get($--button-padding-vertical, 'default');
   }
 
   @include m(primary){

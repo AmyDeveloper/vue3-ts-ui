@@ -1,12 +1,12 @@
 const { series, src, dest } = require('gulp')
-const sass = require('gulp-dart-sass')
+const scss = require('gulp-dart-scss')
 const autoprefixer = require('gulp-autoprefixer')
 const cssmin = require('gulp-cssmin')
 
 
 function compile() { // 处理scss文件
     return src('./src/*.scss')
-    .pipe(sass.sync())
+    .pipe(scss({}))
     .pipe(autoprefixer({}))
     .pipe(cssmin())
     .pipe(dest('./lib'))
