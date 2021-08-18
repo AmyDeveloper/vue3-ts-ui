@@ -75,7 +75,7 @@ yarn add rollup rollup-plugin-typescript2 @rollup/plugin-node-resolve rollup-plu
 ### ToDo-List
 - [x] icon
 - [x] button
-- [ ] button-group
+- [x] button-group
 - [ ] layoout
 - [ ] checkbox
 - [ ] checkbox-group
