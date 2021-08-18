@@ -85,7 +85,10 @@ yarn add rollup rollup-plugin-typescript2 @rollup/plugin-node-resolve rollup-plu
 
 
 ### 问题记录
-- gulp-dart-sass 不支持 scss(1.33.x 以上版本 将 10 / 2 更新为 math.div(10, 2)) 新语法 math.div，换成  gulp-dart-scss
+```sh
+- gulp-dart-sass 插件 不支持 scss(1.33.x 以上版本 将 10 / 2 更新为 math.div(10, 2)) 新语法 math.div，
+  需要换成 gulp-dart-scss 插件 (https://sass-lang.com/documentation/breaking-changes/slash-div)
+```
 
 
 
