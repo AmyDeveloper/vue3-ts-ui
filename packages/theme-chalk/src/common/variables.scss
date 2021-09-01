@@ -115,6 +115,56 @@ $--border-style-base: solid !default;
 $--border-color-hover: var(--y-text-color-placeholder) !default;
 $--border-base: $--border-width-base $--border-style-base
   map.get($--border-color, 'base') !default;
+/// borderRadius|1|Radius|0
+
+$--border-radius: () !default;
+$--border-radius: map.merge((
+  'base': 4px,
+  'small': 2px,
+  'round': 20px,
+  'circle': 100%,
+), $--border-radius);
+
+
+// Box-shadow
+$--box-shadow: () !default;
+$--box-shadow: map.merge(
+  (
+    'base': (
+      0 2px 4px rgba(0, 0, 0, 0.12),
+      0 0 6px rgba(0, 0, 0, 0.04),
+    ),
+    'light': 0 2px 12px 0 rgba(0, 0, 0, 0.1),
+  ),
+  $--box-shadow
+);
+
+
+
+/* Typography
+---------------------------- */
+$--font-path: 'fonts' !default;
+$--font-display: 'auto' !default;
+
+$--font-size: () !default;
+$--font-size: map.merge(
+  (
+    'extra-large': 20px,
+    'large': 18px,
+    'medium': 16px,
+    'base': 14px,
+    'small': 13px,
+    'extra-small': 12px,
+  ),
+  $--font-size
+);
+
+
+/* Disable base
+-------------------------- */
+$--disabled-fill-base: var(--y-background-color-base) !default;
+$--disabled-color-base: var(--y-text-color-placeholder) !default;
+$--disabled-border-base: var(--y-border-color-light) !default;
 
 
 /* Button
@@ -135,6 +185,49 @@ $--button: map.merge(
     'divide-border-color': rgba($--color-white, 0.5),
   ),
   $--button
+);
+
+// need mix, so do not use css var
+$--button-hover-tint-percent: 20%;
+$--button-active-shade-percent: 10%;
+
+$--button-border-color: () !default;
+$--button-background-color: () !default;
+$--button-font-color: () !default;
+
+@each $type in $--types {
+  $--button-border-color: map.merge(
+    (
+      $type: map.get($--colors, $type, 'base')
+    ),
+    $--button-border-color
+  ) !global;
+
+  $--button-background-color: map.merge(
+    (
+      $type: map.get($--colors, $type, 'base'),
+    ),
+    $--button-background-color
+  ) !global;
+
+
+  $--button-font-color: map.merge(
+    (
+      $type: map.get($--colors, 'white')
+    ),
+    $--button-font-color
+  ) !global;
+}
+
+$--button-font-size: () !default;
+$--button-font-size: map.merge(
+  (
+    'default': var(--y-font-size-base, map.get($--font-size, 'base')),
+    'medium': var(--y-font-size-base, map.get($--font-size, 'base')),
+    'small': 12px,
+    'mini': 12px,
+  ),
+  $--button-font-size
 );
 
 $--button-border-radius: () !default;
@@ -158,3 +251,75 @@ $--button-padding-vertical: map.merge(
   ),
   $--button-padding-vertical
 );
+
+$--button-padding-horizontal: () !default;
+$--button-padding-horizontal: map.merge(
+  (
+    'default': 20px,
+    'medium': 20px,
+    'small': 15px,
+    'mini': 15px,
+  ),
+  $--button-padding-horizontal
+);
+
+
+/* Break-point
+------------------------- */
+$--sm: 768px !default;
+$--md: 992px !default;
+$--lg: 1200px !default;
+$--xl: 1920px !default;
+
+$--breakpoints: (
+  'xs': '(max-width: #{$--sm})',
+  'sm': '(min-width: #{$--sm})',
+  'md': '(min-width: #{$--md})',
+  'lg': '(min-width: #{$--lg})',
+  'xl': '(min-width: #{$--xl})',
+) !default;
+
+$--breakpoints-spec: (
+  'xs-only': '(max-width: #{$--sm})',
+
+  'sm-and-up': '(min-width: #{$--sm})',
+  'sm-only': '(min-width: #{$--sm}) and (max-width: #{$--md})',
+  'sm-and-down': '(max-width: #{$--md})',
+
+  'md-and-up': '(min-width: #{$--md})',
+  'md-only': '(min-width: #{$--md}) and (max-width: #{$--lg})',
+  'md-and-down': '(max-width: #{$--lg})',
+
+  'lg-and-up': '(min-width: #{$--lg})',
+  'lg-only': '(min-width: #{$--lg}) and (max-width: #{$--xl})',
+  'lg-and-down': '(max-width: #{$--xl})',
+
+  'xl-only': '(min-width: #{$--xl})'
+) !default;
+
+
+/* Link
+-------------------- */
+// css3 var in packages/theme-chalk/src/link.scss
+$--link: () !default;
+$--link: map.merge(
+  (
+    'font-size': var(--y-font-size-base),
+    'font-weight': var(--y-font-weight-primary),
+    'default-font-color': var(--y-text-color-regular),
+    'default-active-color': var(--y-color-primary),
+    'disabled-font-color': var(--y-text-color-placeholder),
+  ),
+  $--link
+);
+
+$--link-font-color: () !default;
+
+@each $type in $--types {
+  $--link-font-color: map.merge(
+    $--link-font-color,
+    (
+      $type: map.get($--colors, $type, 'base'),
+    )
+  ) !global;
+}

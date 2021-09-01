@@ -1,17 +1,41 @@
 @use "sass:map";
 
 @import "./common/variables.scss";
-@import "./mixins//mixin.scss";
+@import "./mixins/mixin.scss";
+@import "./mixins/_variables.scss";
+@import "./mixins/button";
+@import "./mixins/utils";
+
+@include b(button) {
+  @include set-component-css-var('button', $--button);
+}
 
 @include b(button){ // y-button
   display: inline-block;
+  line-height: 1;
   min-height: 30px;
 
   outline: none;
-  border: #817272;
   user-select: none;
   padding: 0 15px;
   vertical-align: middle;
+  
+  background: var(
+    --y-button-background-color,
+    map.get($--button, 'background-color')
+  );
+
+  border: var(--y-border-base);
+  border-color: var(
+    --y-button-border-color,
+    map.get($--button, 'border-color')
+  );
+
+  color: var(--y-button-font-color, map.get($--button, 'font-color'));
+  text-align: center;
+  font-weight: var(--y-button-font-weight);
+
+  @include utils-user-select(none);
 
   & [class*="y-icon-"]{
     vertical-align: middle;
@@ -43,7 +67,6 @@
         color: var(--y-button-disabled-font-color);
       }
     }
-    
   }
 
   @include when(loading){
@@ -59,20 +82,26 @@
     padding: map.get($--button-padding-vertical, 'default');
   }
 
-  @include m(primary){
-    @include button-type($--color-white,$--color-primary,$--color-primary)
-  }
-  @include m(success){
-    @include button-type($--color-white,$--color-success,$--color-success)
-  }
-  @include m(info){
-    @include button-type($--color-white,$--color-info,$--color-info)
-  }
-  @include m(danger){
-    @include button-type($--color-white,$--color-danger,$--color-danger)
-  }
-  @include m(warning){
-    @include button-type($--color-white,$--color-warning,$--color-warning)
-  }
+  @each $type in (primary, success, info, danger, warning) {
+    @include m($type) {
+      --y-button-font-color: #{map.get($--button-font-color, $type)};
+      --y-button-background-color: #{map.get($--button-background-color, $type)};
+      --y-button-border-color: #{map.get($--button-border-color, $type)};
+      --y-button-hover-color: #{map.get($--colors, $type, 'light-2')};
+      --y-button-active-font-color: #{darken(
+        map.get($--button-font-color, $type),
+        $--button-active-shade-percent
+      )};
+      --y-button-active-background-color: #{darken(
+        map.get($--button-background-color, $type),
+        $--button-active-shade-percent
+      )};
+      --y-button-border-color: #{darken(
+        map.get($--button-border-color, $type),
+        $--button-active-shade-percent
+      )};
 
+      @include button-variant($type);
+    }
+  }
 }

@@ -6,12 +6,25 @@
   <y-icon name="loading"></y-icon>
   <y-icon name="menu"></y-icon>
   <br />
-  <div>1213</div>
+  <div>------------</div>
   <y-button-group>
     <y-button>y-button-group1</y-button>
     <y-button>y-button-group2</y-button>
     <y-button>y-button-group3</y-button>
   </y-button-group>
+  <br />
+  <div>-----------</div>
+  <y-row :gutter="24">
+    <y-col :span="4" class="col-test">444444</y-col>
+    <y-col :span="6" class="col-test2">66</y-col>
+  </y-row>
+  <br />
+  <y-link>默认链接</y-link>
+  <y-link type="primary">主要链接</y-link>
+  <y-link type="warning" :underline="false">警告链接 无下划线</y-link>
+  <y-link type="success" disabled>成功链接 禁用</y-link>
+  <y-link icon="edit">编辑</y-link>
+  <y-link>查看<i name="view"></i></y-link>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
@@ -25,3 +38,11 @@ export default defineComponent({
   },
 })
 </script>
+<style lang="scss" scoped>
+.col-test {
+  background-color: #d3dce6;
+}
+.col-test2 {
+  background-color: #99a9bf;
+}
+</style>

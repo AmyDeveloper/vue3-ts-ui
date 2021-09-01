@@ -1,6 +1,6 @@
 import { createApp } from '@vue/runtime-dom'
 import { App } from 'vue'
-import Button from './src/button.vue'
+import Button from './src/Button.vue'
 Button.install = (app: App): void=> {
   app.component(Button.name, Button) // 注册全局组件
 }

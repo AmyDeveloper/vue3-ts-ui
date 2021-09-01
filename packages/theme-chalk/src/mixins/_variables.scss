@@ -1,0 +1,6 @@
+// set all css var for component by map
+@mixin set-component-css-var($name, $--variables) {
+  @each $attribute, $value in $--variables {
+    --y-#{$name}-#{$attribute}: #{$value}; // ps: --y-button-font-weight: var(--y-font-weight-primary)
+  }
+}

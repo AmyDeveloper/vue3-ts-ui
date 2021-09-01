@@ -1,5 +1,18 @@
 @import "../common/variables.scss";
 
+/* Break-points
+--------------------------- */
+@mixin res($key, $map: $--breakpoints) {
+    // 循环断点 Map，如果存在在返回
+    @if map-has-key($map, $key) {
+        @media only screen and #{unquote(map-get($map, $key))} {
+            @content;
+        }
+    } @else {
+        @warn "Undefined points: `#{$map}`";
+    }
+}
+
 // .y-button{}
 @mixin b($block) {
     $B: $namespace+'-'+$block;
@@ -34,6 +47,6 @@
 
 @mixin button-type($color,$background-color,$border-color){
     color: $color;
-    background-color: $background-color ;
+    background-color: $background-color;
     border-color: $border-color;
 }

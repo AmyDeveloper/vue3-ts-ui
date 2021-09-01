@@ -1,0 +1,92 @@
+@use "sass:map";
+
+@import "./common/variables.scss";
+@import './mixins/mixin.scss';
+@import "./mixins/_variables.scss";
+
+@include b(link) {
+  @include set-component-css-var('link', $--link);
+}
+// $--link
+// 'font-size': var(--y-font-size-base),
+// 'font-weight': var(--y-font-weight-primary),
+// 'default-font-color': var(--y-text-color-regular),
+// 'default-active-color': var(--y-color-primary),
+// 'disabled-font-color': var(--y-text-color-placeholder),
+
+@include b(link) {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  position: relative;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: var(--y-link-font-size);
+  font-weight: var(--y-link-font-weight);
+
+  @include when(underline) {
+    &:hover:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 0;
+      bottom: 0;
+      border-bottom: 1px solid var(--y-link-default-active-color);
+    }
+  }
+
+  @include when(disabled) {
+    cursor: not-allowed;
+  }
+
+  & [class*='#{$namespace}-icon-'] {
+    & + span {
+      margin-left: 5px;
+    }
+  }
+
+  &.#{$namespace}-link--default {
+    color: var(--y-link-default-font-color);
+
+    &:hover {
+      color: var(--y-link-default-active-color);
+    }
+
+    &:after {
+      border-color: var(--y-link-default-active-color);
+    }
+
+    @include when(disabled) {
+      color: var(--y-link-disabled-font-color);
+    }
+  }
+
+  @each $type in $--types {
+    &.#{$namespace}-link--#{$type} {
+      --y-link-font-color: var(--y-color-#{$type});
+      color: var(--y-link-font-color);
+
+      &:hover {
+        color: mix(map.get($--link-font-color, $type), $--color-white, 80%);
+      }
+
+      &:after {
+        border-color: var(--y-link-font-color);
+      }
+
+      @include when(disabled) {
+        color: mix(map.get($--link-font-color, $type), $--color-white, 50%);
+      }
+      @include when(underline) {
+        &:hover:after {
+          border-color: var(--y-link-font-color);
+        }
+      }
+    }
+  }
+}
