@@ -100,6 +100,7 @@ yarn add rollup rollup-plugin-typescript2 @rollup/plugin-node-resolve rollup-plu
 
 
 ### 目录结构
+```
 |-- .gitignore
 |-- README.md
 |-- babel.config.js
@@ -212,3 +213,4 @@ yarn add rollup rollup-plugin-typescript2 @rollup/plugin-node-resolve rollup-plu
     |-- router.ts
     |-- template.html
     |-- webpack.config.js
+```
