@@ -1,12 +1,7 @@
 <template>
   <a
     :href="disabled || !href ? null : href"
-    :class="[
-      'y-link',
-      type ? `y-link--${type}` : '',
-      disabled && 'is-disabled',
-      underline && !disabled && 'is-underline'
-    ]"
+    :class="classes"
     @click="handleClick"
   >
     <i v-if="icon" :class="icon"></i>
@@ -19,7 +14,7 @@
   </a>
 </template>
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
+import { computed, defineComponent, PropType } from 'vue'
 
 type ILinkType = 'primary' | 'success' | 'warning' | 'danger' | 'info'
 
@@ -52,12 +47,20 @@ export default defineComponent({
   },
   emits: ['click'],
   setup(props, { emit }) {
+    const classes = computed(() => [
+      'y-link',
+      'y-link--'+ props.type,
+      {
+        'is-disabled': props.disabled,
+        'is-underline': props.underline && !props.disabled,
+      }
+    ])
     const handleClick = (event: Event) => {
       if (!props.disabled) {
         emit('click', event)
       }
     }
-    return { handleClick }
+    return { handleClick, classes }
   },
 })
 </script>

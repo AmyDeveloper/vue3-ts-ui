@@ -36,8 +36,7 @@ export default defineComponent({
     round: Boolean,
     circle: Boolean,
   },
-  setup(props, ctx) {
-    console.log('button---type', props.type)
+  setup(props) {
     const classes = computed(() => [
       'y-button',
       'y-button--'+ props.type,

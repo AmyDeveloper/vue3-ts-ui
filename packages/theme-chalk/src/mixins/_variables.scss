@@ -4,3 +4,17 @@
     --y-#{$name}-#{$attribute}: #{$value}; // ps: --y-button-font-weight: var(--y-font-weight-primary)
   }
 }
+
+@mixin set-css-var-type($name, $type, $--variables) {
+  --y-#{$name}-#{$type}: #{map.get($--variables, $type)};
+}
+
+@mixin set-css-color-type-light($type, $i) {
+  --y-color-#{$type}-light-#{$i}: #{map.get($--colors, $type, 'light-#{$i}')};
+}
+
+@mixin set-css-color-type($type) {
+  --y-color-#{$type}: #{map.get($--colors, $type, 'base')};
+  --y-color-#{$type}-light: #{map.get($--colors, $type, 'light-8')};
+  --y-color-#{$type}-lighter: #{map.get($--colors, $type, 'light-9')};
+}

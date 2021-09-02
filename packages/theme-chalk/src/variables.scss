@@ -1,0 +1,91 @@
+@use "sass:map";
+
+@import "./common/variables.scss";
+@import "./mixins/_variables.scss";
+
+:root {
+  --y-color-white: #{$--color-white};
+  --y-color-black: #{$--color-black};
+
+  --y-color-primary: #{$--color-primary};
+
+  // --y-color-primary-light-(1-9)
+  @for $i from 1 through 9 {
+    @include set-css-color-type-light('primary', $i);
+  }
+
+  // --y-color-#{$type}: #{map.get($--colors, $type, 'base')};
+  // --y-color-#{$type}-light: #{map.get($--colors, $type, 'light-8')};
+  // --y-color-#{$type}-lighter: #{map.get($--colors, $type, 'light-9')};
+  @each $type in (success, warning, danger, error, info) {
+    @include set-css-color-type($type);
+  }
+
+  // --y-text-color-#{$type}: #{map.get($--text-color, $type)
+  @each $type in (primary, regular, secondary, placeholder) {
+    @include set-css-var-type('text-color', $type, $--text-color);
+  }
+
+  // --y-border-color-#{$type}: #{map.get($--border-color, $type)
+  @each $type in (base, light, lighter, extra-light) {
+    @include set-css-var-type('border-color', $type, $--border-color);
+  }
+
+  // Background
+  --y-background-color-base: #{$--background-color-base};
+
+  // Border
+  --y-border-width-base: #{$--border-width-base};
+  --y-border-style-base: #{$--border-style-base};
+  --y-border-color-hover: var(--y-text-color-placeholder);
+  --y-border-base: var(--y-border-width-base) var(--y-border-style-base) var(--y-border-color-base);
+
+
+  //--y-border-radius-#{$type}: #{map.get($--border-radius, $type)}
+  @each $type in (base, small, round, circle) {
+    @include set-css-var-type('border-radius', $type, $--border-radius);
+  }
+
+  // Box-shadow
+  // --y-box-shadow-#{$type}
+  @each $type in (base, light) {
+    @include set-css-var-type('box-shadow', $type, $--box-shadow);
+  }
+
+  // Svg
+  --y-svg-monochrome-grey: #dcdde0;
+
+  // Fill
+  --y-fill-base: var(--y-color-white);
+
+  // Typography
+  // --y-font-size-#{$type}: #{map.get($--font-size, $type)}
+  @each $type in (extra-large, large, medium, base, small, extra-small) {
+    @include set-css-var-type('font-size', $type, $--font-size);
+  }
+
+  --y-font-weight-primary: 500;
+  --y-font-line-height-primary: 24px;
+  --y-font-color-disabled-base: #bbb;
+
+  // z-index
+  --y-index-normal: 1;
+  --y-index-top: 1000;
+  --y-index-popper: 2000;
+
+  // Disable base
+  --y-disabled-fill-base: var(--y-background-color-base);
+  --y-disabled-color-base: var(--y-text-color-placeholder);
+  --y-disabled-border-base: var(--y-border-color-light);
+
+  /* Transition
+-------------------------- */
+  // refer to this website to get the bezier motion function detail
+  //  https://cubic-bezier.com/#p1,p2,p3,p4 (change px as your function parameter)
+  --y-transition-duration: #{map.get($--transition-duration, 'default')};
+  --y-transition-duration-fast: #{map.get($--transition-duration, 'fast')};
+
+  // --y-transition-function-#{$attribute}: #{$value}
+  @include set-component-css-var('transition-function', $--transition-function);
+  @include set-component-css-var('transition', $--transition);
+}
