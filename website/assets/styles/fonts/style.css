@@ -1,0 +1,8 @@
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: url('./myfont1.woff2');
+}
+@font-face {
+  font-family: Helvetica;
+  src: url('./myfont2.woff2');
+}
