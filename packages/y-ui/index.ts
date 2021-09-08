@@ -4,6 +4,7 @@ import ButtonGroup from '@y-ui/button-group';
 import Row from '@y-ui/row';
 import Col from '@y-ui/col';
 import Link from '@y-ui/link';
+import Input from '@y-ui/input';
 import { App } from 'vue';
 
 
@@ -13,7 +14,8 @@ const components = [
   ButtonGroup,
   Row,
   Col,
-  Link
+  Link,
+  Input
 ]
 
 const install = (app: App): void => {

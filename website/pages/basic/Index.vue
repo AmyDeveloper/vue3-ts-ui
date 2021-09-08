@@ -1,24 +1,27 @@
 <template>
-<div class="router-list">
-  <div class="title">UI Components built on Vue 3</div>
-  <BasicComponent />
-  <FormComponent />
+<div class="components-title">Basic Components:</div>
+<div
+  v-for="(item) in routes"
+  :key="item.path"
+  @click="goToComponent(item)"
+  class="component-item"
+>
+  <template v-if="item.name">
+    <span>{{ item.name }}</span>
+    <y-icon class="arrow-right-icon" name="arrow-right"></y-icon>
+  </template>
 </div>
 </template>
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
 import { RouteRecordRaw, useRouter } from 'vue-router'
-import BasicComponent from './basic/Index.vue'
-import FormComponent from './form/Index.vue'
+import basicRoutes from '../../router/basic'
+
 
 export default defineComponent({
-  components: {
-    BasicComponent,
-    FormComponent
-  },
   setup() {
     const router = useRouter()
-    const routes = computed(() => router.options.routes)
+    const routes = computed(() => basicRoutes)
     const goToComponent = (item: RouteRecordRaw) => {
       router.push({ name: item.name })
     }

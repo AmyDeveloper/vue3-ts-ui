@@ -146,3 +146,36 @@ textarea {
     line-height: 1.5em;
   }
 }
+
+
+
+.router-list {
+  padding: 46px 20px 20px;;
+  font-size: 14px;
+  .title {
+    margin: 0 0 40px;
+    padding-left: 16px;
+    font-size: 18px;
+  }
+  .components-title {
+    color: rgba(69, 90, 100, 0.6);
+    margin: 24px 0 8px 16px;
+  }
+  .component-item {
+    margin: 0 0 12px;
+    padding-left: 20px;
+    color: #323233;
+    border-radius: 99px;
+    font-weight: 600;
+    line-height: 40px;
+    background: #f7f8fa;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .arrow-right-icon {
+      color: #B6C3D2;
+      position: relative;
+      right: 16px;
+    }
+  }
+}

@@ -2,7 +2,7 @@
   "name": "@y-ui/button-group",
   "version": "0.0.0",
   "description": "> TODO: description",
-  "author": "yangqun <qun.yang@advance.ai>",
+  "author": "yangqun",
   "homepage": "https://github.com/AmyDeveloper/vue3-ts-ui#readme",
   "license": "ISC",
   "main": "lib/button-group.js",

@@ -91,12 +91,16 @@ yarn add rollup rollup-plugin-typescript2 @rollup/plugin-node-resolve rollup-plu
   需要换成插件 [gulp-dart-scss](https://sass-lang.com/documentation/breaking-changes/slash-div)
 2. `const _Row: IWithInstall<typeof Row> = Row`
   报错如下
-  Type 'DefineComponent<{ tag: { type: StringConstructor; default: string; }; gutter: { type: NumberConstructor; default: number; }; justify: { type: StringConstructor; default: string; }; align: { ...; }; }, ... 10 more ..., { ...; }>' is not assignable to type 'IWithInstall<DefineComponent<{ tag: { type: StringConstructor; default: string; }; gutter: { type: NumberConstructor; default: number; }; justify: { type: StringConstructor; default: string; }; align: { ...; }; }, ... 10 more ..., { ...; }>>'.
-  Property 'install' is missing in type 'ComponentPublicInstanceConstructor<{ $: ComponentInternalInstance; $data: {}; $props: Partial<{ tag: string; gutter: number; justify: string; align: string; }> & Omit<Readonly<{ tag: string; gutter: number; justify: string; align: string; } & {}> & VNodeProps & AllowedComponentProps & ComponentCustomProps, DefaultKe...' but required in type '{ install(app: App<any>): void; }'.ts(2322)
-  index.ts(9, 30): 'install' is declared here.
+    ```
+    Type 'DefineComponent<{ tag: { type: StringConstructor; default: string; }; gutter: { type: NumberConstructor; default: number; }; justify: { type: StringConstructor; default: string; }; align: { ...; }; }, ... 10 more ..., { ...; }>' is not assignable to type 'IWithInstall<DefineComponent<{ tag: { type: StringConstructor; default: string; }; gutter: { type: NumberConstructor; default: number; }; justify: { type: StringConstructor; default: string; }; align: { ...; }; }, ... 10 more ..., { ...; }>>'.
+    Property 'install' is missing in type 'ComponentPublicInstanceConstructor<{ $: ComponentInternalInstance; $data: {}; $props: Partial<{ tag: string; gutter: number; justify: string; align: string; }> & Omit<Readonly<{ tag: string; gutter: number; justify: string; align: string; } & {}> & VNodeProps & AllowedComponentProps & ComponentCustomProps, DefaultKe...' but required in type '{ install(app: App<any>): void; }'.ts(2322)
+    index.ts(9, 30): 'install' is declared here.
+    ```
 
-  类型强转=>
-  `const _Row = Row as IWithInstall<typeof Row>`
+    ```
+    类型强转=>
+    `const _Row = Row as IWithInstall<typeof Row>`
+    ```
 
 
 ### 目录结构

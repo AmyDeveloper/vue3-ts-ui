@@ -2,7 +2,7 @@
   "name": "@y-ui/check-box",
   "version": "0.0.0",
   "description": "> TODO: description",
-  "author": "yangqun <qun.yang@advance.ai>",
+  "author": "yangqun",
   "homepage": "",
   "license": "ISC",
   "main": "lib/check-box.js",
